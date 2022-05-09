@@ -11,7 +11,17 @@ public class Testeee {
 		System.out.println(c == d);
 		System.out.println(a.equals(b));
 		
+		
+		System.out.println("=========");
+		
+		String nome = "oi";
+		String nome2 = "oi";
+		String nome3 = new String("oi");
+		
 		byte abc = 127;
+		
+		System.out.println("Nomes iguais: " + (nome == nome2));
+		System.out.println("Nomes iguais: " + (nome == nome3));
 		
 	}
 
