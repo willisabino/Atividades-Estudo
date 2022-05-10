@@ -33,11 +33,7 @@ public class DigiteNome extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("<html>");
-		out.println("<body>");
 		out.println("<h1>Seja Bem vindo, " + nomeDigitado + "</h1>");
-		out.println("</body>");
-		out.println("</html>");
 	}
 
 }
