@@ -24,22 +24,22 @@
 	
 	<form method="post" action = "somarSubtrair">
 	
-	<p>
-		Primeiro Numero: <br/>
-		<input type="number" name="n1" /> <br/>
-	</p>
-	<p>
-		Segundo Numero:<br/>
-		<input type="number" name="n2" /> <br/> <br/>
-	</p>
-	<p>
-		<input type="submit" value="Somar" name="somar" />
-		<input type="submit" value="Subtrair" name="subtrair" />
-		<br/> <br/>
-	</p>
-	<p>
-		<%=resultado%>
-	</p>
+		<p>
+			Primeiro Numero: <br/>
+			<input type="number" name="n1" /> <br/>
+		</p>
+		<p>
+			Segundo Numero:<br/>
+			<input type="number" name="n2" /> <br/> <br/>
+		</p>
+		<p>
+			<input type="submit" value="Somar" name="somar" />
+			<input type="submit" value="Subtrair" name="subtrair" />
+			<br/> <br/>
+		</p>
+		<p>
+			<%=resultado%>
+		</p>
 	
 	</form>
 
