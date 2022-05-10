@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="get" action = "DigiteNome"> <!-- Esse formulário está apontando para o servlet -->
+<form method="post" action = "DigiteNome"> <!-- Esse formulário está apontando para o servlet -->
 
 <p>
 	<label for="nome">Qual seu nome?</label>
