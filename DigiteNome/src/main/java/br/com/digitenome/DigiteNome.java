@@ -30,13 +30,13 @@ public class DigiteNome extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//response.setContentType("Text/html");
+		response.setContentType("text/html");
 		
-		//PrintWriter out = response.getWriter();
+		String nomeDigitado = request.getParameter("nome");
 		
-		//String nomeDigitado = request.getParameter("nome");
+		request.setAttribute("name", nomeDigitado);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Welcome");
+		RequestDispatcher rd = request.getRequestDispatcher("DigiteNome.jsp");
 		rd.forward(request, response);
 	}
 

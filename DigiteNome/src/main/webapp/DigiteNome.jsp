@@ -5,6 +5,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Digite Nome</title>
+
+<%
+	String resultado = "";
+	Object name = request.getAttribute("name");
+	if(name == null){
+		resultado = "";
+	}else{
+		resultado = "Seja bem vindo " + name;
+	}
+%>
+
 </head>
 <body>
 
@@ -18,6 +29,8 @@
 <p>
 	<input type="submit" value="Enviar">
 </p>
+
+	<%=resultado%>
 
 </form>
 
