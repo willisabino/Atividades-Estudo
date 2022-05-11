@@ -8,7 +8,7 @@
 
 <%
 	String resultado = "";
-	Object name = request.getAttribute("name");
+	String name = (String) request.getAttribute("name");
 	if(name == null){
 		resultado = "";
 	}else{

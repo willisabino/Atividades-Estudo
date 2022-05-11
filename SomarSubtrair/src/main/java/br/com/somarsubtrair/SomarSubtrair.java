@@ -56,7 +56,7 @@ public class SomarSubtrair extends HttpServlet {
 			
 			resultado = n1 - n2;
 			
-			valor = Float.toString(resultado); //DUVIDA DUVIDA DUVIDA
+			valor = Float.toString(resultado);
 			
 			request.setAttribute("resultado", valor);
 			
