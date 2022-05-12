@@ -14,7 +14,7 @@ public class Conexao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_funcionario", "root", "root");
-			ResultSet rsCliente = connection.createStatement().executeQuery("Select * from cliente");
+			ResultSet rsCliente = connection.createStatement().executeQuery("Select * from tb_pessoas");
 			while (rsCliente.next()) {
 				System.out.println("Nome: " + rsCliente.getString("nome"));
 			}
