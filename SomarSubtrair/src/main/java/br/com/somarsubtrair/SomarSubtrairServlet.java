@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class SomarSubtrair
  */
 @WebServlet("/somarSubtrair")
-public class SomarSubtrair extends HttpServlet {
+public class SomarSubtrairServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SomarSubtrair() {
+    public SomarSubtrairServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,42 +29,21 @@ public class SomarSubtrair extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		float n1 = 0;
-		float n2 = 0;
-		float resultado = 0;
-		String valor = "";
-		
 		response.setContentType("text/html");
 		
+		String soma = request.getParameter("somar");
+		String subtrair = request.getParameter("subtrair");
 		String valorN1 = request.getParameter("n1");
 		String valorN2 = request.getParameter("n2");
 		
-		n1 = Float.parseFloat(valorN1);
-		n2 = Float.parseFloat(valorN2);
-		
-		if(request.getParameter("somar") != null) {
+		SomarSubtrairService service = new SomarSubtrairService();
+
+		String valor = service.calculo(soma, subtrair, valorN1, valorN2);
+
+		request.setAttribute("resultado", valor);
 			
-			resultado = n1 + n2;
-			valor = Float.toString(resultado);
-			
-			request.setAttribute("resultado", valor);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-			
-		}else if(request.getParameter("subtrair") != null){
-			
-			resultado = n1 - n2;
-			
-			valor = Float.toString(resultado);
-			
-			request.setAttribute("resultado", valor);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-			
-		}
-		
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
 	}
 
 }
