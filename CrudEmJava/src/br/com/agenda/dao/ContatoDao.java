@@ -10,7 +10,7 @@ import java.util.List;
 import br.com.agenda.factory.ConnectionFactory;
 import br.com.agenda.model.Contato;
 
-public class ContatoDAO {
+public class ContatoDao {
 	
 	/*
 	 * CRUD
