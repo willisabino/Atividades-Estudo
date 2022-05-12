@@ -11,7 +11,7 @@ public class CadastroDAO {
 
 	public void save(Cadastro cadastro) {
 		
-		String sql = "INSERT INTO tb_nomes(nome) VALUES (?)";
+		String sql = "INSERT INTO tb_nomes(nome, dataCadastro) VALUES (?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -21,7 +21,7 @@ public class CadastroDAO {
 			conn = ConnectionFactory.createConnectionToMySQL();
 			
 			//Criamos uma PreparedStatement para executar query
-			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			pstm = conn.prepareStatement(sql);
 			
 			//Adicionamos os valores que são esperados pela query
 			pstm.setString(1, cadastro.getNome());
@@ -33,6 +33,7 @@ public class CadastroDAO {
 		}catch (Exception e) {
 			
 			e.printStackTrace();
+			System.out.println("Erro de conexão");
 			
 		}finally {
 			//Fechar as conexões

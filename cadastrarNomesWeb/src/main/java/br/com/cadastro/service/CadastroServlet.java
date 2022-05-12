@@ -1,4 +1,4 @@
-package br.com.cadastro;
+package br.com.cadastro.service;
 
 import java.io.IOException;
 import java.util.Date;
