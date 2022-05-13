@@ -19,14 +19,7 @@ public class ContatoDao {
 	 * U: UPDATE
 	 * D: DELETE
 	 */
-	Contato c = new Contato();
-	
-	@Override
-	public String toString() {
-		return "Nome: " + c.getNome() + "Idade: " + c.getIdade();
-	}
-	
-	
+
 	
 	public void save(Contato contato) {
 		
@@ -132,6 +125,92 @@ public class ContatoDao {
 		}
 		
 		return contatos;
+	}
+
+
+	public void update(Contato contato) {
+		
+		String sql = "UPDATE tb_pessoas SET nome = ?, idade = ?, dataCadastro = ? "+
+		"WHERE id = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			//Criar conexão com o banco
+			conn = ConnectionFactory.createConnectionToMySQL();
+			
+			//Criar a classe para executar a query
+			pstm = conn.prepareStatement(sql);
+			
+			//Adicionar os valores para atualizar
+			pstm.setString(1, contato.getNome());
+			pstm.setInt(2, contato.getIdade());
+			pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
+			
+			
+			//Qual o ID do resgistro que deseja atualizar?
+			pstm.setLong(4, contato.getId());
+			
+			//Executar a Query
+			pstm.execute();
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(pstm!=null) {
+					pstm.close();
+				}
+				
+				if(conn!=null) {
+					conn.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	
+	public void deleteById(int id) {
+		
+		String sql = "DELETE FROM tb_pessoas WHERE id = ?";
+		
+		Connection conn = null;
+		
+		PreparedStatement pstm = null;
+		
+		try {
+			conn = ConnectionFactory.createConnectionToMySQL();
+			
+			pstm = conn.prepareStatement(sql);
+			
+			pstm.setLong(1, id);
+			
+			pstm.execute();
+			
+		}catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(pstm != null) {
+					
+					pstm.close();
+					
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
 

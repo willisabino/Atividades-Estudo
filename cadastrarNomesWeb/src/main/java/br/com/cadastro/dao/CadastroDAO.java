@@ -8,13 +8,14 @@ import br.com.cadastro.factory.ConnectionFactory;
 import br.com.cadastro.model.Cadastro;
 
 public class CadastroDAO {
-
+	
 	public void save(Cadastro cadastro) {
 		
 		String sql = "INSERT INTO tb_nomes(nome, dataCadastro) VALUES (?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
+		
 		
 		try {
 			//Criar uma conexão com banco de dados
@@ -50,5 +51,4 @@ public class CadastroDAO {
 			}
 		}
 	}
-
 }

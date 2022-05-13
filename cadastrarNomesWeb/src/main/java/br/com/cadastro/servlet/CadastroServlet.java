@@ -1,4 +1,4 @@
-package br.com.cadastro.service;
+package br.com.cadastro.servlet;
 
 import java.io.IOException;
 import java.util.Date;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cadastro.dao.CadastroDAO;
 import br.com.cadastro.model.Cadastro;
+import br.com.cadastro.service.CadastroService;
 
 /**
  * Servlet implementation class CadastroServlet
@@ -45,13 +46,9 @@ public class CadastroServlet extends HttpServlet {
 		
 		String nomeCadastrado = request.getParameter("nome");
 		
-		CadastroDAO cadastroDao = new CadastroDAO();
+		CadastroService cadastroService = new CadastroService();
 		
-		Cadastro cadastro = new Cadastro();
-		cadastro.setNome(nomeCadastrado);
-		cadastro.setDataCadastro(new Date());
-		
-		cadastroDao.save(cadastro);
+		cadastroService.starter(nomeCadastrado);
 		
 		request.setAttribute("informe", "Cadastro Realizado Com Sucesso!");
 		
