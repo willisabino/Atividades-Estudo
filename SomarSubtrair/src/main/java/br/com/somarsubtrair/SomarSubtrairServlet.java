@@ -31,16 +31,24 @@ public class SomarSubtrairServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		
-		String soma = request.getParameter("somar");
-		String subtrair = request.getParameter("subtrair");
-		String valorN1 = request.getParameter("n1");
-		String valorN2 = request.getParameter("n2");
+		String acao = request.getParameter("ação");
+		String valorNumero1 = request.getParameter("numero1");
+		String valorNumero2 = request.getParameter("numero2");
+		String resultado = "";
 		
 		SomarSubtrairService service = new SomarSubtrairService();
+		
+		if(acao.equals("Somar")) {
+			
+			resultado = service.somar(valorNumero1, valorNumero2);
+			
+		}else if(acao.equals("Subtrair")){
+			
+			resultado = service.subtrair(valorNumero1, valorNumero2);
+			
+		}
 
-		String valor = service.calculo(soma, subtrair, valorN1, valorN2);
-
-		request.setAttribute("resultado", valor);
+		request.setAttribute("resultado", resultado);
 			
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);

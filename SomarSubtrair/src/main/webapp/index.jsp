@@ -26,15 +26,15 @@
 	
 		<p>
 			Primeiro Numero: <br/>
-			<input type="number" name="n1" /> <br/>
+			<input type="number" name="numero1" /> <br/>
 		</p>
 		<p>
 			Segundo Numero:<br/>
-			<input type="number" name="n2" /> <br/> <br/>
+			<input type="number" name="numero2" /> <br/> <br/>
 		</p>
 		<p>
-			<input type="submit" value="Somar" name="somar" />
-			<input type="submit" value="Subtrair" name="subtrair" />
+			<input type="submit" value="Somar" name="ação"/>
+			<input type="submit" value="Subtrair" name="ação"/>
 			<br/> <br/>
 		</p>
 		<p>
