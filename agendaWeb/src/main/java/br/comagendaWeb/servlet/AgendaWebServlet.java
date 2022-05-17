@@ -72,8 +72,8 @@ public class AgendaWebServlet extends HttpServlet {
 		
 		request.setAttribute("informe", "Cadastro Realizado Com Sucesso!");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
 	}
 
 }
