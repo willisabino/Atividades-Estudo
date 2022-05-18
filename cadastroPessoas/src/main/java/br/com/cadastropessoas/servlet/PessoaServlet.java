@@ -40,10 +40,12 @@ public class PessoaServlet extends HttpServlet {
 		
 		//request.setAttribute("sessaoListaPessoa", listaUsuario);
 		
+		
+		//****METODO DELETAR****
 		String id = request.getParameter("id");
 		
 		pessoaService.deletePessoa(id);
-		
+		//****METODO DELETAR****
 		
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
