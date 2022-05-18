@@ -12,9 +12,6 @@
 <meta charset="ISO-8859-1">
 <title>Cadastrar Pessoas</title>
 <link rel="stylesheet" href="estilo.css">
-
-<%boolean habilitar = true;%>
-
 </head>
 <body>
 

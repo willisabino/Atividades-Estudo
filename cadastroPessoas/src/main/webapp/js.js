@@ -33,7 +33,7 @@ function limpar(){
 	document.getElementById("idade").value="";
 }
 
-function bloquear(){
+/*function bloquear(){
 	alert("teste");
     const id = document.querySelector('#id').value;
 
@@ -42,4 +42,14 @@ function bloquear(){
         return;
     }
     document.querySelector('#alterar').disabled = true;
-}
+}*/
+
+setTimeout(function bloquear() {
+	 const id = document.querySelector('#id').value;
+
+    if(id){
+        document.querySelector('#alterar').disabled = false;
+        return;
+    }
+    document.querySelector('#alterar').disabled = true;
+}, 1000);
