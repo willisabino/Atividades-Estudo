@@ -1,8 +1,6 @@
 package br.com.cadastropessoas.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.cadastropessoas.dao.PessoaDao;
-import br.com.cadastropessoas.model.Pessoa;
 import br.com.cadastropessoas.service.PessoaService;
 
 /**
@@ -38,7 +34,6 @@ public class PessoaServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		PessoaService pessoaService = new PessoaService();
-		PessoaDao pessoaDao = new PessoaDao();
 		
 		//List<PessoaDao> listaUsuario = pessoaDao.getListaPessoas();
 		//ArrayList<Pessoa> listaPessoas = pessoaService.getPessoas();
@@ -46,7 +41,6 @@ public class PessoaServlet extends HttpServlet {
 		//request.setAttribute("sessaoListaPessoa", listaUsuario);
 		
 		String id = request.getParameter("id");
-		String acao = request.getParameter("acao");
 		
 		pessoaService.deletePessoa(id);
 		
@@ -70,7 +64,6 @@ public class PessoaServlet extends HttpServlet {
 		
 		PessoaService pessoaService = new PessoaService();
 
-		
 		if(acao.equals("Inserir")) {
 			
 			pessoaService.postPessoas(nome, idade, sexo);

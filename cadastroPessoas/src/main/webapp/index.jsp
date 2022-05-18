@@ -13,7 +13,7 @@
 <title>Cadastrar Pessoas</title>
 <link rel="stylesheet" href="estilo.css">
 
-<%boolean habilitar = true; %>
+<%boolean habilitar = true;%>
 
 </head>
 <body>
@@ -21,18 +21,18 @@
 	<form method="post" action="pessoaservlet" name = "frm" id="frm">
 
 		<h1>Cadastro de Pessoas</h1>
-		<p>
+		<p 	>
 			<label for="id" >ID</label> 
 			<input type="number" name="id" id="id" onchange="bloquear()" value="${param.id}">
 		</p>
 		<p>
 			<label for="nome">Nome</label> 
-			<input type="text" name="nome" id="nome" value="${param.nome}">
+			<input type="text" name="nome" id="nome" required value="${param.nome}">
 		</p>
 
 		<p>
 			<label for="nome">Idade</label> 
-			<input type="number" name="idade" id="idade" value="${param.idade}">
+			<input type="number" name="idade" id="idade" min="0" max="99" required value="${param.idade}">
 		</p>
 
 		<p>
@@ -44,25 +44,22 @@
 			</select>
 		</p>
 		
-
-
 		<p>
 			<input type="submit" value="Inserir" name="acao">
 			<logic:equals property="id" value="">
-			<input type="submit" value="Alterar" disabled="false">
+			<input type="submit" value="Alterar" disabled="disabled">
 			</logic:equals>
 			
 			<!-- Testes de bloquear -->
-			<input type="submit" value="Alterar" name="acao" id="alterar" disabled="${param.habilitar}">
+			<input type="submit" value="Alterar" name="acao" id="alterar" disabled>
 			<!-- Testes de bloquear -->
-			
-			
-
 		</p>
+		
+		
 	</form>
 	<p>
 	<!-- Testes de bloquear -->
-	<button id="alterar" disabled>Alterar</button>
+	<button id="modificar" disabled >Alterar</button>
 	<!-- Testes de bloquear -->
 	
 	<input type="button" value="Limpar" id="limpar" onclick="limpar()">
@@ -115,37 +112,17 @@
 				<td><%=vIdade%></td>
 				<td><%=vSexo%></td>
 				<td><%=vDataCadastro%></td>
-				<td><a
-					href="index.jsp?id=<%=vId%>&nome=<%=vNome%>&idade=<%=vIdade%>&sexo=<%=vSexo%>&habilitar=<%=false%>">O</a></td>
-				<td><a href="pessoaservlet?id=<%=vId%>"
-					onclick="return confirm('Tem certeza que deseja apagar o contato <%=vNome%>?')">X</a></td>
+				<td><a href="index.jsp?id=<%=vId%>&nome=<%=vNome%>&idade=<%=vIdade%>&sexo=<%=vSexo%>&habilitar=<%=false%>" onclick= 'bloquear()'>O</a></td>
+				<td><a href="pessoaservlet?id=<%=vId%>" onclick="return confirm('Tem certeza que deseja apagar o contato <%=vNome%>?')">X</a></td>
 			</tr>
 
 			<%
 			}
 			%>
 		</tbody>
-
 	</table>
 	
-<script> 
-function limpar(){
-	document.getElementById("id").value="";
-	document.getElementById("nome").value="";
-	document.getElementById("idade").value="";
-}
-
-function bloquear(){
-	alert("teste");
-    const id = document.querySelector('#id').value;
-
-    if(id){
-        document.querySelector('#alterar').disabled = false;
-        return;
-    }
-    document.querySelector('#alterar').disabled = true;
-}
-</script>
+	<script src="js.js"></script>
 
 </body>
 </html>

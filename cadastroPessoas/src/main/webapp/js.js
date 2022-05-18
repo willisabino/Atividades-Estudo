@@ -25,3 +25,21 @@ function limpar(){
 	document.getElementById("nome").value=""
 	document.getElementById("idade").value=""
 }
+
+
+function limpar(){
+	document.getElementById("id").value="";
+	document.getElementById("nome").value="";
+	document.getElementById("idade").value="";
+}
+
+function bloquear(){
+	alert("teste");
+    const id = document.querySelector('#id').value;
+
+    if(id){
+        document.querySelector('#alterar').disabled = false;
+        return;
+    }
+    document.querySelector('#alterar').disabled = true;
+}

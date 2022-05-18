@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.cadastropessoas.factory.ConnectionFactory;
 import br.com.cadastropessoas.model.Pessoa;

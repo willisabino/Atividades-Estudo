@@ -1,6 +1,5 @@
 package br.com.cadastropessoas.service;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,7 +25,7 @@ public class PessoaService {
 		
 		
 		
-		PessoaDao pessoaDao = new PessoaDao();
+		//PessoaDao pessoaDao = new PessoaDao();
 		//ArrayList<PessoaDao> pessoas = new ArrayList<>();
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 		
@@ -66,4 +65,6 @@ public class PessoaService {
 		pessoaDao.deleteById(Long.parseLong(id));
 		
 	}
+	
+
 }
