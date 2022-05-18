@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="br.com.cadastropessoas.dao.PessoaDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,6 +13,15 @@
 <meta charset="ISO-8859-1">
 <title>Cadastrar Pessoas</title>
 <link rel="stylesheet" href="estilo.css">
+
+<%
+	PessoaDao dao = new PessoaDao();
+	Pessoa p = new Pessoa();
+
+	ArrayList<Pessoa> user = dao.getListaPessoas();
+	
+	String registro = "";
+%>
 </head>
 <body>
 
@@ -21,7 +31,7 @@
 		
 		<p hidden="hidden">
 			<label for="id" >ID</label> 
-			<input type="number" name="id" id="id" value="${param.id}">
+			<input type="number" name="id" id="id" value="${param.id}" onchange="bloquear2()">
 		</p>
 		<p>
 			<label for="nome">Nome</label> 
@@ -40,8 +50,8 @@
 			</select>
 		</p>
 		<p>
-			<input type="submit" value="Inserir" name="acao">
-			<input type="submit" value="Alterar" name="acao" id="alterar" disabled>
+			<input type="submit" value="Inserir" name="acao" id="inserir" hidden=false>
+			<input type="submit" value="Alterar" name="acao" id="alterar" hidden>
 		</p>
 		
 	</form>
@@ -53,6 +63,13 @@
 	<p>
 		<button onclick="window.location.href='index.jsp'">Limpar</button>
 	</p>
+	
+	<%if(user.size() == 0){
+		
+		registro = "Não há registros na tabela";
+		
+	}else{ %>
+	
 	<table>
 		<thead>
 			<tr>
@@ -68,47 +85,48 @@
 		<tbody>
 
 			<%
-			long tabelaId = 0;
-			String tabelaNome = "";
-			int tabelaIdade = 0;
-			String tabelaSexo = "";
-			Date tabelaDataCadastro;
-
-			PessoaDao dao = new PessoaDao();
-			Pessoa p = new Pessoa();
-
-			ArrayList<Pessoa> user = dao.getListaPessoas();
-
 			for (int i = 0; i < user.size(); i++) {
 
 				p = user.get(i);
 
-				tabelaId = Long.valueOf(p.getId());
-				tabelaNome = String.valueOf(p.getNome());
-				tabelaIdade = Integer.valueOf(p.getIdade());
-				tabelaSexo = String.valueOf(p.getSexo());
+				long tabelaId = Long.valueOf(p.getId());
+				String tabelaNome = String.valueOf(p.getNome());
+				int tabelaIdade = Integer.valueOf(p.getIdade());
+				String tabelaSexo = String.valueOf(p.getSexo());
+				Date dataBancoDeDados;
+				
 				if (tabelaSexo.equals("m")) {
 					tabelaSexo = "Masculino";
 				} else if (tabelaSexo.equals("f")) {
 					tabelaSexo = "Feminino";
 				}
-				tabelaDataCadastro = java.sql.Date.valueOf(String.valueOf(p.getDataCadastro()));
-			%>
+				dataBancoDeDados = java.sql.Date.valueOf(String.valueOf(p.getDataCadastro()));
+				SimpleDateFormat formatador = new SimpleDateFormat("dd-MM-yyyy");
+				String tabelaDataCadastro = formatador.format(dataBancoDeDados);
+				%>
 			<tr>
 				<td><%=tabelaId%></td>
 				<td><%=tabelaNome%></td>
 				<td><%=tabelaIdade%></td>
 				<td><%=tabelaSexo%></td>
 				<td><%=tabelaDataCadastro%></td>
-				<td><a href="index.jsp?id=<%=tabelaId%>&nome=<%=tabelaNome%>&idade=<%=tabelaIdade%>&sexo=<%=tabelaSexo%>&habilitar=<%=false%>" onclick= 'bloquear()'>O</a></td>
+				<td> <input type="button" value="O" name="acao" onclick="alterar()">
+				
+				<a href="index.jsp?id=<%=tabelaId%>&nome=<%=tabelaNome%>&idade=<%=tabelaIdade%>&sexo=<%=tabelaSexo%>" onclick= 'bloquear()'>O</a></td>
 				<td><a href="pessoaservlet?id=<%=tabelaId%>" onclick="return confirm('Tem certeza que deseja apagar o contato <%=tabelaNome%>?')">X</a></td>
 			</tr>
 
 			<%
 			}
 			%>
+
+			
 		</tbody>
 	</table>
+			<%
+			}
+			%>
+	<%=registro %>
 	
 	<script src="js.js"></script>
 

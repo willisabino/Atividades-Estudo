@@ -41,6 +41,8 @@ public class PessoaServlet extends HttpServlet {
 		//request.setAttribute("sessaoListaPessoa", listaUsuario);
 		
 		
+		
+		
 		//****METODO DELETAR****
 		String id = request.getParameter("id");
 		

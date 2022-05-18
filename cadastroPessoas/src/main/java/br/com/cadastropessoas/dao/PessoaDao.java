@@ -11,7 +11,7 @@ import br.com.cadastropessoas.model.Pessoa;
 
 public class PessoaDao {
 
-	public void postListaPessoas(Pessoa pessoa) {
+	public void inserirCadastro(Pessoa pessoa) {
 		
 		String sql = "INSERT INTO tb_ficha(nome, idade, sexo, dataCadastro) VALUES (?, ?, ?, ?)";
 		
@@ -121,7 +121,7 @@ public class PessoaDao {
 	}
 
 
-	public void putListaPessoas(Pessoa pessoa) {
+	public void editarCadastro(Pessoa pessoa) {
 		
 		String sql = "UPDATE tb_ficha SET nome = ?, idade = ?, sexo = ?, dataCadastro = ? "+
 		"WHERE id = ?";
@@ -170,7 +170,7 @@ public class PessoaDao {
 	}
 
 	
-	public void deleteById(long id) {
+	public void deletarCadastro(long id) {
 		
 		String sql = "DELETE FROM tb_ficha WHERE id = ?";
 		

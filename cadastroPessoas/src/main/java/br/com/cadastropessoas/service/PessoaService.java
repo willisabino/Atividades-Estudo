@@ -18,7 +18,9 @@ public class PessoaService {
 		pessoa.setSexo(sexo);
 		pessoa.setDataCadastro(new Date());
 		
-		pessoaDao.postListaPessoas(pessoa);
+		pessoaDao.inserirCadastro(pessoa);
+		
+
 	}
 	
 	public ArrayList<Pessoa> getPessoas() {
@@ -54,7 +56,7 @@ public class PessoaService {
 		pessoa.setDataCadastro(new Date());
 		pessoa.setId(Long.parseLong(id));
 		
-		pesssoaDao.putListaPessoas(pessoa);
+		pesssoaDao.editarCadastro(pessoa);
 	}
 
 
@@ -62,7 +64,7 @@ public class PessoaService {
 		
 		PessoaDao pessoaDao = new PessoaDao();
 		
-		pessoaDao.deleteById(Long.parseLong(id));
+		pessoaDao.deletarCadastro(Long.parseLong(id));
 		
 	}
 	
