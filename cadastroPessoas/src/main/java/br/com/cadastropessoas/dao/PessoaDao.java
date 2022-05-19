@@ -19,19 +19,15 @@ public class PessoaDao {
 		PreparedStatement pstm = null;
 		
 		try {
-			//Criar uma conexão com banco de dados
 			conn = ConnectionFactory.createConnectionToMySQL();
 			
-			//Criamos uma PreparedStatement para executar query
 			pstm = (PreparedStatement) conn.prepareStatement(sql);
 			
-			//Adicionamos os valores que são esperados pela query
 			pstm.setString(1, pessoa.getNome());
 			pstm.setInt(2, pessoa.getIdade());
 			pstm.setString(3, pessoa.getSexo());
 			pstm.setDate(4, new Date(pessoa.getDataCadastro().getTime()));
 			
-			//Executar a query
 			pstm.execute();
 			
 			System.out.println("Dados salvos!!!");
@@ -41,7 +37,6 @@ public class PessoaDao {
 			e.printStackTrace();
 			
 		}finally {
-			//Fechar as conexões
 			try{
 				if(pstm!=null){
 					pstm.close();
@@ -66,7 +61,6 @@ public class PessoaDao {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		
-		//Classe que vai recuperar os dados do banco ***SELECT***
 		ResultSet rset = null;
 		
 		try {
@@ -80,15 +74,10 @@ public class PessoaDao {
 				
 				Pessoa pessoa = new Pessoa();
 				
-				//Recuperar o ID
 				pessoa.setId(rset.getInt("id"));
-				//Recuperar o nome
 				pessoa.setNome(rset.getString("nome"));
-				//Recuperar a idade
 				pessoa.setIdade(rset.getInt("idade"));
-				//Recuperar a Sexo
 				pessoa.setSexo(rset.getString("sexo"));
-				//Recuperar a data de cadastro
 				pessoa.setDataCadastro(rset.getDate("dataCadastro"));
 				
 				pessoas.add(pessoa);
@@ -130,23 +119,17 @@ public class PessoaDao {
 		PreparedStatement pstm = null;
 		
 		try {
-			//Criar conexão com o banco
 			conn = ConnectionFactory.createConnectionToMySQL();
 			
-			//Criar a classe para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			//Adicionar os valores para atualizar
 			pstm.setString(1, pessoa.getNome());
 			pstm.setInt(2, pessoa.getIdade());
 			pstm.setString(3, pessoa.getSexo());
 			pstm.setDate(4, new Date(pessoa.getDataCadastro().getTime()));
 			
-			
-			//Qual o ID do resgistro que deseja atualizar?
 			pstm.setLong(5, pessoa.getId());
 			
-			//Executar a Query
 			pstm.execute();
 			
 		}catch(Exception e) {

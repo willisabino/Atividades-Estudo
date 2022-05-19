@@ -10,7 +10,6 @@ public class Pessoa {
 	private String sexo;
 	private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
 	
-	//<Getter e Setters>
 	public long getId() {
 		return id;
 	}
@@ -41,5 +40,4 @@ public class Pessoa {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	//</Getter e Setters>
 }
