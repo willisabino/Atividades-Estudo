@@ -26,6 +26,23 @@ desc tb_aluno;
 /*outer join chama todas as linhas da tabela. Mesmo que estejam vazias*/
 
 
+/*
+Estrutura de um INNER JOIN
+
+SELECT colunas
+FROM tabela1
+INNER JOIN tabela2
+ON tabela1.coluna = tabela2.coluna;
+
+Ou seja, com esse comando eu estou dizendo:
+
+SELECIONE as colunas
+DA tabela 1
+JUNTO COM a tabela 2
+CONECTADAS PELA chave estrangeira e chave primaria
+*/
+
+
 
 
 
