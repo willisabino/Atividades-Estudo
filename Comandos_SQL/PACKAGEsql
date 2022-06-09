@@ -1,0 +1,35 @@
+CREATE OR REPLACE PACKAGE pkg_hello_world
+AS
+ PROCEDURE procPrintHelloWorld_2 (p_saida out varchar2);
+ 
+END pkg_hello_world;
+/
+CREATE OR REPLACE PACKAGE BODY pkg_hello_world AS
+
+PROCEDURE procPrintHelloWorld_2 (p_saida out varchar2) IS
+
+    BEGIN
+        p_saida := 'Hello World';
+    END procPrintHelloWorld_2;
+    
+END pkg_hello_world;
+/
+
+
+
+CREATE OR REPLACE PACKAGE pkg_soma_teste
+AS
+
+ PROCEDURE procSomaTeste (p_num_1 in number, p_num_2 in number, p_resultado out number);
+ 
+END pkg_soma_teste;
+/
+
+CREATE OR REPLACE PACKAGE BODY pkg_soma_teste AS
+
+    PROCEDURE procSomaTeste (p_num_1 in number, p_num_2 in number, p_resultado out number) IS
+    
+    BEGIN
+      p_resultado := p_num_1 + p_num_2;
+    END procSomaTeste;
+END pkg_soma_teste;

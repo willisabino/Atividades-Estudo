@@ -42,3 +42,29 @@ BEGIN
     dbms_output.put_line(v_saida);
 END;
 /*EXECUTANDO PROCEDURE SOMA ----> FIM*/
+
+
+
+
+
+/*EXECUTANDO PACOTE HELLO WORLD ----> INICIO*/
+declare
+    v_retorno varchar2(1000);
+begin
+    pkg_hello_world.procprinthelloworld_2(v_retorno);
+    dbms_output.put_line(v_retorno);
+end;
+/*EXECUTANDO PACOTE HELLO WORLD ----> FIM*/
+
+
+
+/*EXECUTANDO PACOTE SOMA ----> INICIO*/
+declare
+    v_retorno number;
+begin
+    pkg_soma_teste.procsomateste(2, 2, v_retorno);
+    dbms_output.put_line(v_retorno);
+end;
+/*EXECUTANDO PACOTE SOMA ----> FIM*/
+
+
